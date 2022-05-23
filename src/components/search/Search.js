@@ -18,8 +18,8 @@ function Search() {
     search(searchValue).then((data) => {
       if (data && !data.error) {
         const searchResult = data?.map((searchBook) => {
+          if (searchBook.id !== "any-id") searchBook.shelf = "none";
           myCollection.forEach((book) => {
-            if (!searchBook.shelf) searchBook.shelf = "none";
             if (searchBook.id === book.id) searchBook.shelf = book.shelf;
           });
           return searchBook;

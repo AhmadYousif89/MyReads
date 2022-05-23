@@ -10,10 +10,10 @@ function BookCollection() {
 
   return (
     <>
-      {!myCollection || myCollection == null ? (
+      {!myCollection.length || myCollection == null ? (
         <div style={{ textAlign: "center" }}>
           <h3>No Books in your collection</h3>
-          <p>Start adding some by using the search bar</p>
+          <p>. . . Start adding some . . .</p>
         </div>
       ) : (
         <ul className="books-grid">

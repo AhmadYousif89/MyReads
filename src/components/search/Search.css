@@ -28,7 +28,7 @@
 .search-btn {
   position: fixed;
   bottom: 100px;
-  left: 100px;
+  right: 100px;
   color: #3578a8;
   cursor: pointer;
 }

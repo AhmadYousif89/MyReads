@@ -8,12 +8,14 @@ function OptionList({ book }) {
 
   const modifyBookShelf = async (event, book) => {
     setIsLoading(true);
-    await update(book, event.currentTarget.value);
+    await update(book, event.target.value);
     await getAll().then((data) => {
       setIsLoading(false);
       setMyCollection(data);
-      toast.success(`Book shelf updated`);
     });
+    if (event.target.value === "none")
+      toast.info(`Book Removed From Collection`);
+    else toast.success(`Book Shelf Updated`);
   };
 
   return (
@@ -21,9 +23,7 @@ function OptionList({ book }) {
       <select
         value={book.shelf}
         onChange={(event) => modifyBookShelf(event, book)}>
-        <option defaultChecked disabled>
-          . . . Add to . . .
-        </option>
+        <option disabled>. . . Add to . . .</option>
         <option value="currentlyReading">
           {book.shelf === "currentlyReading" ? (
             <> &#9989; Currently Reading</>

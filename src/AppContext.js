@@ -3,9 +3,10 @@ import React, { createContext, useContext, useState } from "react";
 const AppContext = createContext();
 function AppContextProvider({ children }) {
   const [searchValue, setSearchValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [myCollection, setMyCollection] = useState([]);
   const [searchedBooks, setSearchedBooks] = useState([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <AppContext.Provider
       value={{
@@ -17,6 +18,8 @@ function AppContextProvider({ children }) {
         setSearchedBooks,
         searchValue,
         setSearchValue,
+        isSearchOpen,
+        setIsSearchOpen,
       }}>
       {children}
     </AppContext.Provider>
@@ -38,6 +41,10 @@ export const useSearchList = () => {
 export const useSearchValue = () => {
   const { searchValue, setSearchValue } = useContext(AppContext);
   return { searchValue, setSearchValue };
+};
+export const useSearchBtn = () => {
+  const { isSearchOpen, setIsSearchOpen } = useContext(AppContext);
+  return { isSearchOpen, setIsSearchOpen };
 };
 
 export default AppContextProvider;

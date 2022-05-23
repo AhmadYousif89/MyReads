@@ -1,6 +1,8 @@
 import { BiBookReader } from "react-icons/bi";
+import { useEffect } from "react";
 import {
   useLoadingHook,
+  useSearchBtn,
   useSearchList,
   useSearchValue,
 } from "../../AppContext";
@@ -13,6 +15,11 @@ function SearchContent() {
   const { searchedBooks } = useSearchList();
   const { searchValue } = useSearchValue();
   const { isLoading } = useLoadingHook();
+  const { setIsSearchOpen } = useSearchBtn();
+
+  useEffect(() => {
+    setIsSearchOpen(true);
+  }, [setIsSearchOpen]);
 
   if (isLoading) return <Spinner />;
 
@@ -25,7 +32,7 @@ function SearchContent() {
         {searchedBooks == null ? (
           <div className="search-empty">
             <BiBookReader />
-            <h4>. . . Start Searching . . . </h4>
+            <h4> . . . Start Your Book Journey . . . </h4>
           </div>
         ) : searchedBooks.error ? (
           <div style={{ textAlign: "center" }}>

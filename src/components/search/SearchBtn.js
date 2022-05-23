@@ -1,11 +1,11 @@
 import { IoCloseCircle, IoAddCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useSearchBtn } from "../../AppContext";
 import "./Search.css";
 
 function SearchBtn() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const navigate = useNavigate();
+  const { isSearchOpen, setIsSearchOpen } = useSearchBtn();
 
   const handleSearchOpen = () => {
     navigate("/search");
