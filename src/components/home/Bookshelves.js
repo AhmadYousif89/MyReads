@@ -1,6 +1,6 @@
 import BookShelf from "./BookShelf";
 
-function BookShelfs() {
+function BookShelves() {
   return (
     <div style={{ margin: "2em" }}>
       <BookShelf category="currentlyReading" />
@@ -10,4 +10,4 @@ function BookShelfs() {
   );
 }
 
-export default BookShelfs;
+export default BookShelves;

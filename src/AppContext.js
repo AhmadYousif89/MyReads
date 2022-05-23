@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const AppContext = createContext();
 function AppContextProvider({ children }) {
+  const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [myCollection, setMyCollection] = useState([]);
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -14,6 +15,8 @@ function AppContextProvider({ children }) {
         setMyCollection,
         searchedBooks,
         setSearchedBooks,
+        searchValue,
+        setSearchValue,
       }}>
       {children}
     </AppContext.Provider>
@@ -31,6 +34,10 @@ export const useBookCollection = () => {
 export const useSearchList = () => {
   const { searchedBooks, setSearchedBooks } = useContext(AppContext);
   return { searchedBooks, setSearchedBooks };
+};
+export const useSearchValue = () => {
+  const { searchValue, setSearchValue } = useContext(AppContext);
+  return { searchValue, setSearchValue };
 };
 
 export default AppContextProvider;

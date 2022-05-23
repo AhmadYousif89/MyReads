@@ -6,7 +6,7 @@ import "./App.css";
 import AppLayout from "./AppLayout";
 import AppContextProvider from "./AppContext";
 import Home from "./components/home/Home";
-import SearchContent from "./components/navbar/SearchContent";
+import SearchContent from "./components/search/SearchContent";
 import SingleBook from "./components/book/SingleBook";
 import NotFound from "./components/utils/NotFound";
 
@@ -17,7 +17,7 @@ function App() {
         toastStyle={{ maxWidth: "300px" }}
         theme="colored"
         autoClose={3000}
-        position={"bottom-left"}
+        position={"top-center"}
         hideProgressBar={true}
         pauseOnFocusLoss={false}
       />

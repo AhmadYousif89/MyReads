@@ -1,37 +1,46 @@
-import { useSearchList } from "../../AppContext";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {
+  useBookCollection,
+  useSearchList,
+  useSearchValue,
+} from "../../AppContext";
+import { useEffect } from "react";
 import { FiDelete } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
 import { search } from "../../BooksAPI";
-import "./styles/Search.css";
+import "./Search.css";
 
 function Search() {
-  const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState("");
   const { setSearchedBooks } = useSearchList();
+  const { myCollection } = useBookCollection();
+  const { searchValue, setSearchValue } = useSearchValue();
 
   useEffect(() => {
     search(searchValue).then((data) => {
-      if (data?.error) {
-        return;
+      if (data && !data.error) {
+        const searchResult = data?.map((searchBook) => {
+          myCollection.forEach((book) => {
+            if (!searchBook.shelf) searchBook.shelf = "none";
+            if (searchBook.id === book.id) searchBook.shelf = book.shelf;
+          });
+          return searchBook;
+        });
+        setSearchedBooks(searchResult);
+      } else {
+        setSearchedBooks(data);
       }
-      setSearchedBooks(data);
     });
-  }, [searchValue, setSearchedBooks]);
+  }, [myCollection, searchValue, setSearchedBooks]);
 
   const handleSearch = (event) => {
     setSearchValue(event.target.value);
-    navigate("/search");
   };
 
   const closeSearchQuery = () => {
     setSearchValue("");
-    navigate("/");
   };
 
   return (
-    <div className="search-books">
+    <>
       <div className="search-books-bar">
         <FaSearch />
         <input
@@ -42,7 +51,7 @@ function Search() {
         />
         <FiDelete onClick={closeSearchQuery} id="delete-icon" />
       </div>
-    </div>
+    </>
   );
 }
 

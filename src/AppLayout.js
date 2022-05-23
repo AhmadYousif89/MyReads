@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/navigation/Navbar";
+import SearchBtn from "./components/search/SearchBtn";
 
 const styles = {
   display: "flex",
@@ -8,9 +9,10 @@ const styles = {
 
 function AppLayout() {
   return (
-    <main className="apps" style={styles}>
+    <main style={styles}>
       <Navbar />
       <Outlet />
+      <SearchBtn />
     </main>
   );
 }

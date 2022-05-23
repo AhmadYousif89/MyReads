@@ -1,0 +1,52 @@
+/* search page */
+
+.search-books-bar {
+  width: 300px;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.19);
+}
+
+.search-books-bar input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+#delete-icon {
+  transform: scale(1.5);
+}
+#delete-icon:hover {
+  cursor: pointer;
+  color: #777;
+  transition: 100ms linear;
+}
+
+.search-btn {
+  position: fixed;
+  bottom: 100px;
+  left: 100px;
+  color: #3578a8;
+  cursor: pointer;
+}
+
+.search-btn svg {
+  transform: scale(4);
+}
+
+.search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+.search-empty svg {
+  transform: scale(10);
+  color: rgb(109, 140, 194);
+}
+.search-empty h4 {
+  margin-top: 6rem;
+}

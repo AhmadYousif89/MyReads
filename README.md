@@ -1,13 +1,20 @@
-# Getting Started with Create React App
+# MyReads
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- My Reads is book tracker react application designed to provid the user with the ability to add various books in different categorys to his collection displayed in categorized bookshelves, plus the ability to update the book shelf in the collection to a different book section.
 
-## Available Scripts
+## Getting Started
 
 To get started developing right away:
 
-- install all project dependencies with `npm install`
+- install all project dependencies with `npm install` or `yarn add`
 - start the development server with `npm start`
+
+## How To
+
+- to add a book to your collection simply click on the search button which will navigate you to search page.
+- if the search query doesn't match any book on the database the user will be presented with `No books were found` message.
+
+## Available Scripts
 
 ### `npm start`
 
@@ -73,8 +80,3 @@ search(query);
 
 - query: `<String>`
 - Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-- These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
-
-## Important
-
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.

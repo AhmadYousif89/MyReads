@@ -2,7 +2,7 @@ import { useBookCollection, useLoadingHook } from "../../AppContext";
 import { useEffect } from "react";
 import { ImBook } from "react-icons/im";
 import { getAll } from "../../BooksAPI";
-import BookShelfs from "./BookShelfs";
+import BookShelves from "./Bookshelves";
 import BookCollection from "./BookCollection";
 
 function Home() {
@@ -27,7 +27,7 @@ function Home() {
         <BookCollection />
       </div>
       <div style={{ margin: "2em" }}>
-        <BookShelfs />
+        <BookShelves />
       </div>
     </main>
   );

@@ -10,7 +10,7 @@ function BookCollection() {
 
   return (
     <>
-      {!myCollection.length || myCollection == null ? (
+      {!myCollection || myCollection == null ? (
         <div style={{ textAlign: "center" }}>
           <h3>No Books in your collection</h3>
           <p>Start adding some by using the search bar</p>

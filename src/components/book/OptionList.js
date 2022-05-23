@@ -7,8 +7,8 @@ function OptionList({ book }) {
   const { setMyCollection } = useBookCollection();
 
   const modifyBookShelf = async (event, book) => {
-    await update(book, event.currentTarget.value);
     setIsLoading(true);
+    await update(book, event.currentTarget.value);
     await getAll().then((data) => {
       setIsLoading(false);
       setMyCollection(data);
@@ -21,7 +21,9 @@ function OptionList({ book }) {
       <select
         value={book.shelf}
         onChange={(event) => modifyBookShelf(event, book)}>
-        <option disabled>. . . Move to . . .</option>
+        <option defaultChecked disabled>
+          . . . Add to . . .
+        </option>
         <option value="currentlyReading">
           {book.shelf === "currentlyReading" ? (
             <> &#9989; Currently Reading</>
@@ -39,7 +41,9 @@ function OptionList({ book }) {
         <option value="read">
           {book.shelf === "read" ? <> &#9989; Read</> : "Read"}
         </option>
-        {book.shelf ? <option value="none">Remove</option> : null}
+        <option value="none">
+          {book.shelf === "none" ? <> &#9989; None</> : "Remove"}
+        </option>
       </select>
     </div>
   );
